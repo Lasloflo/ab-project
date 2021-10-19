@@ -1,0 +1,109 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+        <!-- content begin -->
+        <div id="content" class="no-top no-bottom" data-bgimage="url({% static 'images/background/1.jpg' %})" data-stellar-background-ratio=".2">
+            <div class="overlay-bg t50 no-bottom">
+                <!-- subheader -->
+                <section id="subheader" class="dark no-top no-bottom">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1>Contact</h1>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- subheader close -->
+
+                <section aria-label="section-services">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <h3>Main Office</h3>
+                                    <address class="s1">
+												<span><i class="fa fa-map-marker fa-lg"></i>100 Mainstreet Center, Sydney</span>
+												<span><i class="fa fa-phone fa-lg"></i>(208) 333 9296</span>
+												<span><i class="fa fa-envelope-o fa-lg"></i><a href="mailto:contact@example.com">contact@example.com</a></span>
+												<span><i class="fa fa-file-pdf-o fa-lg"></i><a href="#">Download Brochure</a></span>
+											</address>
+
+                                    <div class="spacer-double"></div>
+
+                                    <h3>Branch Office</h3>
+                                    <address class="s1">
+												<span><i class="fa fa-map-marker fa-lg"></i>100 Mainstreet Center, Sydney</span>
+												<span><i class="fa fa-phone fa-lg"></i>(208) 333 9296</span>
+												<span><i class="fa fa-envelope-o fa-lg"></i><a href="mailto:contact@example.com">contact@example.com</a></span>
+												<span><i class="fa fa-file-pdf-o fa-lg"></i><a href="#">Download Brochure</a></span>
+                                    </address>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                          <!--   -->
+                                    <form action="{% url 'main:contact' %}" name="contactForm" id='contact_form'  class="row form-s1" method="post">
+                                        {% csrf_token %}
+
+
+                                        <div class="field-set col-md-6">
+                                            {{ form.name }}
+                                            <!--  <input type='text' name='name' id='name' class="form-control" placeholder="Your Name"> -->
+                                            <div id='mail_fail' class='error'>{{ form.name.errors }}</div>
+                                        </div>
+                                        <div class="field-set col-md-6">
+                                            {{ form.email }}
+                                            <div class='error_input'>{{ form.email.errors }}</div>
+
+                                           <!--  <input type='text' name='email' id='email' class="form-control" placeholder="Your Email"> -->
+                                        </div>
+
+                                        <div class="field-set col-md-6">
+                                           {{ form.phone }}
+                                            <div class='error_input'>{{ form.phone.errors }}</div>
+                                           <!--  <input type='text' name='phone' id='phone' class="form-control" placeholder="Phone"> -->
+                                        </div>
+
+                                        <div class="field-set col-md-6">
+                                           {{ form.subject }}
+                                            <div class='error_input'>{{ form.subject.errors }}</div>
+                                           <!-- <input type='text' name='phone' id='subject' class="form-control" placeholder="Subject"> -->
+                                        </div>
+
+                                        <div class="field-set col-md-12">
+                                           {{ form.message }}
+                                            <div class='error_input'>{{ form.message.errors }}</div>
+                                           <!--  <textarea name='message' id='message' class="form-control" placeholder="Your Message"></textarea> -->
+                                        </div>
+
+                                        <div class="spacer-half"></div>
+
+                                        <div class="col-md-12">
+                                            <div id='submit'>
+                                                 <!--id='send_message'-->
+                                                <input type='submit'  value='Submit' class="btn btn-custom color-2">
+                                            </div>
+                                            <div id='mail_success' class='success'>Your message has been sent successfully.</div>
+                                            <div id='mail_fail' class='error'>Sorry, error occured this time sending your message.</div>
+                                        </div>
+
+                                    </form>
+
+                                <div class="spacer-double"></div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- content close -->
+
+
+{% endblock %}

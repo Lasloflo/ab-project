@@ -1,0 +1,45 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+        <!-- header close -->
+
+
+        <!-- content begin -->
+{% block content %}
+        <div id="content" class="no-top no-bottom" data-bgimage="url({% static 'images/background/sb1.jpg' %})" data-stellar-background-ratio=".2">
+            <div class="overlay-bg t50 no-bottom">
+                <!-- subheader -->
+                <section id="subheader" class="dark no-top no-bottom">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1>Gallery Albums</h1>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- subheader close -->
+
+                <section aria-label="section-services">
+                    <div class="container-fluid">
+                        <div id="album-carousel" class="owl-carousel owl-theme mt-30">
+                            {% for album in albums %}
+                            <div class="carousel-item">
+                                <div class="mask">
+                                    <div class="cover">
+                                        <h3>{{ album.title }}</h3><span class="count"></span>
+                                        <div class="clearfix"></div>
+                                        <p>{{ album.description }}                                 <!-- Read more -->
+                                            <a href="{{ album.get_absolute_url }}" class="btn-link">Read more</a>
+                                        </p>
+                                    </div>
+                                    <img src="{{ album.photo.url }}" alt="" class="img-responsive">
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- content close -->
+{% endblock %}

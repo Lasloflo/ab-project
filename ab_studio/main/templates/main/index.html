@@ -1,0 +1,143 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+    {% block style %}
+    <!-- RS5.0 Main Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="{% static 'revolution/css/settings.css' %}">
+
+         <!-- RS5.0 Layers and Navigation Styles -->
+    <link rel="stylesheet" type="text/css" href="{% static 'revolution/css/layers.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'revolution/css/navigation.css' %}">
+
+	<link rel="stylesheet" href="{% static 'css/rev-settings.css' %}" type="text/css">
+    {% endblock style %}
+
+
+    {% block content %}
+        <!-- content begin -->
+        <div id="content" class="no-bottom no-top">
+            <div id="top"></div>
+
+            <!-- revolution slider begin -->
+            <section id="section-slider" class="fullwidthbanner-container" aria-label="section-slider">
+                <div id="revolution-slider">
+                    <ul>
+                        {% for photo in photos %}
+                        <li data-transition="fade" data-slotamount="10" data-masterspeed="default" data-thumb="">
+                            <!--  BACKGROUND IMAGE -->
+
+							<img src="{{ photo.photo.url }}"  alt=""  data-lazyload="{{ photo.photo.url }}" data-bgposition="center center" data-kenburns="on" data-duration="30000" data-ease="Power1.easeOut" data-scalestart="120" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" class="rev-slidebg" data-no-retina data-bgparallax="15">
+							
+							<div class="tp-caption big-s1"
+                                {% if photo.text_on_left %}
+                                data-x="left"
+                                {% else %}
+                                data-x="right"
+                                {% endif %}
+                                data-y="230"
+                                data-width="none"
+                                data-height="none"
+                                data-whitespace="nowrap"
+                                data-transform_in="y:100px;opacity:0;s:500;e:Power2.easeOut;"
+                                data-transform_out="opacity:0;y:-100;s:200;e:Power2.easeInOut;"
+                                data-start="500"
+                                data-splitin="none"
+                                data-splitout="none"
+								data-type="text" 
+                                data-responsive_offset="on">
+                                {{ photo.title }}
+                            </div>
+							
+							<div class="tp-caption tp-wrap"
+                                {% if photo.text_on_left %}
+                                data-x="left"
+                                {% else %}
+                                data-x="right"
+                                {% endif %}
+                                data-y="center"
+                                data-width="none"
+                                data-height="none"
+                                data-transform_in="y:100px;opacity:0;s:500;e:Power2.easeOut;"
+                                data-transform_out="opacity:0;y:-100;s:400;e:Power2.easeInOut;"
+                                data-start="600">
+								<div class="small-border"></div>
+                            </div>
+
+                            <div class="tp-caption tp-wrap"
+                                {% if photo.text_on_left %}
+                                data-x="left"
+                                {% else %}
+                                data-x="right"
+                                {% endif %}
+                                data-y="320"
+                                data-width="none"
+                                data-height="none"
+                                data-whitespace="nowrap"
+                                data-transform_in="y:100px;opacity:0;s:500;e:Power2.easeOut;"
+                                data-transform_out="opacity:0;y:-100;s:600;e:Power2.easeInOut;"
+                                data-start="700">
+                                {% if photo.text_on_left %}
+								<div class="tp-wrap">
+                                    {{ photo.description }}
+								</div>
+                                {% else  %}
+                                <div class="tp-wrap text-right">
+                                    {{ photo.description }}
+								</div>
+                                {% endif %}
+                            </div>
+
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </section>
+            <!-- revolution slider close -->
+
+        </div>
+        <!-- content close -->
+    {% endblock content %}
+
+    {% block scripts %}
+	<!-- RS5.0 Core JS Files -->
+    <script src="{% static 'revolution/js/jquery.themepunch.tools.min.js' %}?rev=5.0"></script>
+    <script src="{% static 'revolution/js/jquery.themepunch.revolution.min.js' %}?rev=5.0"></script>
+
+    <!-- RS5.0 Extensions Files -->
+    <script src="{% static 'revolution/js/extensions/revolution.extension.video.min.js' %}"></script>
+    <script src="{% static 'revolution/js/extensions/revolution.extension.slideanims.min.js' %}"></script>
+    <script src="{% static 'revolution/js/extensions/revolution.extension.layeranimation.min.js' %}"></script>
+    <script src="{% static 'revolution/js/extensions/revolution.extension.navigation.min.js' %}"></script>
+    <script src="{% static 'revolution/js/extensions/revolution.extension.actions.min.js' %}"></script>
+    <script src="{% static 'revolution/js/extensions/revolution.extension.kenburn.min.js' %}"></script>
+    <script src="{% static 'revolution/js/extensions/revolution.extension.migration.min.js' %}"></script>
+    <script src="{% static 'revolution/js/extensions/revolution.extension.parallax.min.js' %}"></script>
+
+    <!-- current page only scripts -->
+    <script src="{% static 'js/typed.js' %}"></script>
+    <script src="{% static 'js/typed-custom.js' %}"></script>
+
+	<script>
+        jQuery(document).ready(function () {
+            // revolution slider
+            jQuery("#revolution-slider").revolution({
+                sliderType: "standard",
+                sliderLayout: "fullscreen",
+                delay: 5000,
+                navigation: {
+                    arrows: { enable: true }
+                },
+                parallax: {
+                    type: "mouse",
+                    origo: "slidercenter",
+                    speed: 2000,
+                    levels: [2, 3, 4, 5, 6, 7, 12, 16, 10, 50],
+                },
+                spinner: "off",
+                gridwidth: 1140,
+                gridheight: 600,
+                disableProgressBar: "on"
+            });
+        });
+    </script>
+    {% endblock %}

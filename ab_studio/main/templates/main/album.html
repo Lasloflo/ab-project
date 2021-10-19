@@ -1,0 +1,51 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block content %}
+        <!-- content begin -->
+        <div id="content" class="no-top no-bottom" data-bgimage="url({% static 'images/background/bg-1.jpg' %})" data-stellar-background-ratio=".2">
+            <div class="overlay-bg t50 no-bottom">
+                <!-- subheader -->
+                <section id="subheader" class="dark no-top no-bottom">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1>{{ title }}</h1>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- subheader close -->
+
+                <section aria-label="section-services">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="gallery" class="gallery full-gallery de-gallery pf_full_width pf_3_cols row sequence">
+                                    {% for photo in photos %}
+                                    <!-- gallery item -->
+                                    <div class="item gallery-item col-md-4 mb30">
+                                        <div class="picframe wow">
+                                            <a class="image-popup" href="{{ photo.photo.url }}">
+											<span class="overlay">
+												<span class="pf_text">
+													<span class="project-name">{{ photos.album.name }}</span>
+												</span>
+											</span>
+											<img src="{{ photo.photo.url }}" class="wow" alt=""/>
+										</a>
+                                        </div>
+                                    </div>
+                                    <!-- close gallery item -->
+                                    {% endfor %}
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- content close -->
+{% endblock %}
