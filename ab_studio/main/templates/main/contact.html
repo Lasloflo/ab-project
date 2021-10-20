@@ -63,8 +63,11 @@
                                         </div>
 
                                         <div class="field-set col-md-6">
-                                           {{ form.phone }}
-                                            <div class='error_input'>{{ form.phone.errors }}</div>
+                                            {% if form.phone.errors %}
+                                            <div class='error_input'>Неверно введен номер телефона</div>
+                                            {% endif %}
+                                            {{ form.phone }}
+
                                            <!--  <input type='text' name='phone' id='phone' class="form-control" placeholder="Phone"> -->
                                         </div>
 
