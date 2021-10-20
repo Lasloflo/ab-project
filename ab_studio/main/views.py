@@ -8,22 +8,22 @@ import requests
 
 menu = {
     'Home': 'main:home',
-    #'About': 'main:about',
-    #'Services': 'main:services',
-    #'Gallery': 'main:gallery',
-    # 'Video': 'main:video',
-    # 'Blog': 'main:blog',
-    #'Contact': 'main:contact',
+    'About': 'main:about',
+    'Services': 'main:services',
+    'Gallery': 'main:gallery',
+    'Video': 'main:video',
+    'Blog': 'main:blog',
+    'Contact': 'main:contact',
 
 }
 # Create your views here.
 def index(request):
-    #content = PhotoInHomePage.objects.all()
+    content = PhotoInHomePage.objects.all()
 
     context = {
         'title': 'Home',
         'menu': menu,
-        #'photos': content
+        'photos': content
     }
     return render(request, 'main/index.html', context=context)
 
