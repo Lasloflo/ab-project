@@ -23,6 +23,7 @@
                     <div class="container-fluid">
                         <div id="album-carousel" class="owl-carousel owl-theme mt-30">
                             {% for album in albums %}
+                            {% if album.is_publish == True %}
                             <div class="carousel-item">
                                 <div class="mask">
                                     <div class="cover">
@@ -35,6 +36,7 @@
                                     <img src="{{ album.photo.url }}" alt="" class="img-responsive">
                                 </div>
                             </div>
+                            {% endif %}
                             {% endfor %}
                         </div>
                     </div>
