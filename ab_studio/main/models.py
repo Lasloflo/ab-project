@@ -38,7 +38,7 @@ class Album(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('main:album', kwargs={'album_id': self.pk})
+        return reverse('main:album', kwargs={'album_slug': self.slug})
 
 
 

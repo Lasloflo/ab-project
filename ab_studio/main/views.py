@@ -35,11 +35,13 @@ def about(request):
 def services(request):
     pass
 
-def show_album(request, album_id):
-    photos = PhotoAlbums.objects.filter(album_id=album_id)
-    album = Album.objects.get(pk=album_id)
+def show_album(request, album_slug):
+    album = Album.objects.get(slug=album_slug)
+    photos = PhotoAlbums.objects.filter(album_id = album.pk)
+
     data = {
         'title': album.title,
+        'bgphoto': album.photo,
         'menu': menu,
         'photos': photos,
     }

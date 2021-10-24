@@ -2,8 +2,8 @@
 {% load static %}
 
 {% block content %}
-        <!-- content begin -->
-        <div id="content" class="no-top no-bottom" data-bgimage="url({% static 'images/background/bg-1.jpg' %})" data-stellar-background-ratio=".2">
+        <!-- content begin images/background/bg-1.jpg-->
+        <div id="content" class="no-top no-bottom" data-bgimage="url({{ bgphoto.url}})" data-stellar-background-ratio=".2">
             <div class="overlay-bg t50 no-bottom">
                 <!-- subheader -->
                 <section id="subheader" class="dark no-top no-bottom">
@@ -33,7 +33,7 @@
 												</span>
 											</span>
 											<img src="{{ photo.photo.url }}" class="wow" alt=""/>
-										</a>
+										    </a>
                                         </div>
                                     </div>
                                     <!-- close gallery item -->

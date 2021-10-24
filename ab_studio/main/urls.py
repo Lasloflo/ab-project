@@ -12,4 +12,5 @@ urlpatterns = [
     path('blog/', blog, name='blog'),
     path('contact/', contact, name='contact'),
     path('messagesent/', sentmessage, name='sentmessage'),
+    path('album/<slug:album_slug>', show_album, name='album'),
 ]
